@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/simge.png" alt="YKS Panelim simgesi" width="110">
+<img src="docs/logo.png" alt="YKS Panelim simgesi" width="110">
 
 # YKS Panelim
 
