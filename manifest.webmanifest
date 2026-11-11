@@ -1,0 +1,21 @@
+{
+  "name": "YKS Panelim",
+  "short_name": "YKS Panelim",
+  "description": "Kişisel YKS çalışma uygulaması: SAY, EA, SÖZ ve DİL için konular, sayaç, denemeler, yanlış defteri ve büyüyen ağaçlar.",
+  "start_url": "./index.html#bugun",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0e1117",
+  "theme_color": "#0e1117",
+  "lang": "tr",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Sayaç", "url": "./index.html#sayac", "icons": [{"src": "icon-192.png", "sizes": "192x192"}]},
+    {"name": "Deneme ekle", "url": "./index.html#denemeler", "icons": [{"src": "icon-192.png", "sizes": "192x192"}]}
+  ]
+}
