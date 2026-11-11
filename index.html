@@ -8,8 +8,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icon-192.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192-v2.png">
+<link rel="apple-touch-icon" href="apple-touch-icon-v2.png">
 <title>YKS Çalışma Paneli</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1219,7 +1219,7 @@ function instDraw(){ const el=$('inst'); let body='';
     <div class="ist-arrow">⬇</div>`; }
   else { body= installEvt ? `<button class="btn primary" style="width:100%;padding:15px;font-size:16px" data-act="install">📲 Uygulamayı yükle</button><div class="muted" style="font-size:13px;text-align:center;margin-top:10px">Tek dokunuşla ana ekranına eklenir.</div>`
       : `<div class="ist"><b>1</b><div>Sağ üstteki <b>⋮</b> menüsüne dokun.</div></div><div class="ist"><b>2</b><div><b>"Uygulamayı yükle"</b>yi ya da <b>"Ana ekrana ekle"</b>yi seç.</div></div><div class="ist"><b>3</b><div><b>Yükle</b>'ye bas. YKS Panelim uygulamalarının arasına gelir.</div></div>`; }
-  el.innerHTML=`<div class="inst-box"><img src="icon-192.png" alt="" width="72" height="72" style="border-radius:18px;display:block;margin:0 auto 12px"><h2>YKS Panelim'i telefonuna kur</h2>
+  el.innerHTML=`<div class="inst-box"><img src="icon-192-v2.png" alt="" width="72" height="72" style="border-radius:18px;display:block;margin:0 auto 12px"><h2>YKS Panelim'i telefonuna kur</h2>
     <p class="lead">Uygulama olarak kurunca ana ekranından tek dokunuşla, tam ekran ve internetsiz açılır.</p>${body}
     <button class="ist-skip" data-act="instSkip">Şimdilik tarayıcıda devam et</button></div>`; }
 ACT.instSkip=()=>{ try{ localStorage.setItem('yks-inst-skip',Date.now()); }catch(e){} instCheck(); };
