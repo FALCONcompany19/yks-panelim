@@ -62,6 +62,16 @@ svg{display:block}
 .opt .mini{display:block;margin:-4px auto 4px;width:100%;max-width:120px}
 .onb .err{color:var(--bad);font-size:13px;min-height:18px;margin-top:6px}
 .prof-card{margin-bottom:8px}
+.inst{position:fixed;inset:0;z-index:95;background:radial-gradient(900px 500px at 50% -10%,#2a3366 0%,transparent 60%),var(--bg);overflow-y:auto;display:none;padding:34px 18px 30px}
+.inst.show{display:block}
+.inst-box{max-width:460px;margin:0 auto}
+.inst h2{font-size:23px;font-weight:800;text-align:center;margin-bottom:8px;letter-spacing:-.3px}
+.inst .lead{color:var(--muted);text-align:center;font-size:14.5px;line-height:1.55;margin-bottom:20px}
+.ist{display:flex;gap:12px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin-bottom:10px;font-size:15px;line-height:1.5}
+.ist>b{flex:0 0 28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px}
+.ist-arrow{text-align:center;font-size:30px;color:var(--accent);margin-top:8px;animation:bob 1.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.ist-skip{display:block;margin:18px auto 0;color:var(--muted);font-size:13.5px;text-decoration:underline;text-underline-offset:3px}
 .forest{margin:14px 0 18px}
 .fhead{font-size:12.5px;font-weight:800;color:var(--muted);letter-spacing:.6px;margin:14px 0 8px}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px}
@@ -334,6 +344,7 @@ select.inp{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns
 </div>
 <nav class="bnav" id="bottomNav"></nav>
 <div class="onb" id="onb"></div>
+<div class="inst" id="inst"></div>
 <div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
 <div id="tip"></div>
 <div class="toast" id="toast"></div>
@@ -1185,7 +1196,37 @@ ACT.subjGo=el=>{ const sb=SUBJ[el.dataset.s]; if(!sb) return; view.page='konular
 var installEvt=null;
 addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); installEvt=e; if(view.page==='bugun') softRender(); });
 addEventListener('appinstalled',()=>{ installEvt=null; toast('Uygulama kuruldu 🎉'); render(); });
-ACT.install=async()=>{ if(!installEvt)return; installEvt.prompt(); try{ await installEvt.userChoice; }catch(e){} installEvt=null; render(); };
+ACT.install=async()=>{ if(!installEvt)return; installEvt.prompt(); try{ await installEvt.userChoice; }catch(e){} installEvt=null; render(); instCheck(); };
+/* ---------- Kurulum rehberi ---------- */
+const UA=navigator.userAgent||'';
+const IS_IOS=/iPad|iPhone|iPod/.test(UA)||(/Macintosh/.test(UA)&&navigator.maxTouchPoints>1);
+const IS_ANDROID=/Android/i.test(UA);
+const IN_APP=/FBAN|FBAV|Instagram|WhatsApp|Line\/|Twitter|TikTok|Snapchat|GSA\//i.test(UA);
+const IOS_NOT_SAFARI=IS_IOS&&/CriOS|FxiOS|EdgiOS|OPiOS/i.test(UA);
+const isStandalone=()=>{ try{ return matchMedia('(display-mode: standalone)').matches||matchMedia('(display-mode: fullscreen)').matches||navigator.standalone===true; }catch(e){ return false; } };
+function instShouldShow(){ if(window.claude||!/^https?:$/.test(location.protocol)||isStandalone()) return false; if(!(IS_IOS||IS_ANDROID)) return false;
+  try{ const t=+localStorage.getItem('yks-inst-skip')||0; if(Date.now()-t<3*864e5) return false; }catch(e){} return true; }
+function instCheck(){ const el=$('inst'); if(!el) return; if(!instShouldShow()){ el.classList.remove('show'); el.innerHTML=''; return; } el.classList.add('show'); instDraw(); }
+const SHARE_IC='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-5px"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>';
+function instDraw(){ const el=$('inst'); let body='';
+  if(IN_APP||IOS_NOT_SAFARI){ body=`<div class="ist"><b>1</b><div>Bu sayfa şu an ${IOS_NOT_SAFARI?'başka bir tarayıcıda':'uygulamanın içinde'} açık. Uygulama olarak kurmak için <b>${IS_IOS?'Safari':'Chrome'}</b>'de açman gerekiyor.</div></div>
+    <div class="ist"><b>2</b><div>Sağ üstteki <b>⋯</b> ya da <b>paylaş</b> menüsünden <b>"${IS_IOS?'Safari\'de aç':'Tarayıcıda aç'}"</b>i seç.</div></div>
+    <div class="ist"><b>3</b><div>Açılan sayfada bu ekran tekrar çıkacak, oradan kurarsın.</div></div>
+    <button class="btn" style="width:100%;margin-top:6px" data-act="instCopy">🔗 Linki kopyala</button>`; }
+  else if(IS_IOS){ body=`<div class="ist"><b>1</b><div>Ekranın altındaki <b>Paylaş</b> ${SHARE_IC} simgesine dokun.</div></div>
+    <div class="ist"><b>2</b><div>Açılan menüyü biraz aşağı kaydır, <b>"Ana Ekrana Ekle"</b>ye dokun.</div></div>
+    <div class="ist"><b>3</b><div>Sağ üstteki <b>Ekle</b>'ye bas. YKS Panelim ana ekranına gelir, oradan açınca normal uygulama gibi tam ekran çalışır.</div></div>
+    <div class="ist-arrow">⬇</div>`; }
+  else { body= installEvt ? `<button class="btn primary" style="width:100%;padding:15px;font-size:16px" data-act="install">📲 Uygulamayı yükle</button><div class="muted" style="font-size:13px;text-align:center;margin-top:10px">Tek dokunuşla ana ekranına eklenir.</div>`
+      : `<div class="ist"><b>1</b><div>Sağ üstteki <b>⋮</b> menüsüne dokun.</div></div><div class="ist"><b>2</b><div><b>"Uygulamayı yükle"</b>yi ya da <b>"Ana ekrana ekle"</b>yi seç.</div></div><div class="ist"><b>3</b><div><b>Yükle</b>'ye bas. YKS Panelim uygulamalarının arasına gelir.</div></div>`; }
+  el.innerHTML=`<div class="inst-box"><img src="icon-192.png" alt="" width="72" height="72" style="border-radius:18px;display:block;margin:0 auto 12px"><h2>YKS Panelim'i telefonuna kur</h2>
+    <p class="lead">Uygulama olarak kurunca ana ekranından tek dokunuşla, tam ekran ve internetsiz açılır.</p>${body}
+    <button class="ist-skip" data-act="instSkip">Şimdilik tarayıcıda devam et</button></div>`; }
+ACT.instSkip=()=>{ try{ localStorage.setItem('yks-inst-skip',Date.now()); }catch(e){} instCheck(); };
+ACT.instCopy=()=>{ const u=location.href.split('#')[0]; (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(()=>toast('Link kopyalandı'),()=>prompt('Linki kopyala:',u)); };
+addEventListener('beforeinstallprompt',()=>setTimeout(()=>{ if($('inst')&&$('inst').classList.contains('show')) instDraw(); },0));
+addEventListener('appinstalled',()=>setTimeout(instCheck,0));
+setTimeout(instCheck,300);
 if('serviceWorker' in navigator && /^https?:$/.test(location.protocol) && !(window.claude)){ addEventListener('load',()=>{ navigator.serviceWorker.register('sw.js').catch(()=>{}); }); }
 try{ navigator.storage&&navigator.storage.persist&&navigator.storage.persist(); }catch(e){}
 
