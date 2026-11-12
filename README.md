@@ -30,6 +30,8 @@ Sayısal · Eşit Ağırlık · Sözel · Dil &nbsp;|&nbsp; Android ve iPhone &n
 
 - **Sana özel:** Adını, alanını ve hedefini sorar, uygulama senin adınla açılır.
 - **Her alana uygun:** SAY, EA, SÖZ ve DİL için ayrı konu listeleri, denemeler ve puan hesabı var.
+- **Yol gösterir:** İlk açılışta kısa bir rehber uygulamayı adım adım tanıtır.
+- **Hedefini takip eder:** Hedef bölümünün sıralamasını ve kendi sıralamanı girersin, ne kadar kaldığını renklerle gösterir.
 - **Motive eder:** Her dersin kendi ağacı var. Konuları bitirdikçe ağaçların büyür ve sonunda kocaman bir ormanın olur.
 - **Tamamen ücretsiz:** Reklam yok, üyelik yok, ücretli bir özellik yok.
 - **Gizli:** Bütün verilerin sadece senin telefonunda kalır.
@@ -47,9 +49,23 @@ Sayısal · Eşit Ağırlık · Sözel · Dil &nbsp;|&nbsp; Android ve iPhone &n
 - **Adın:** Uygulama "Ayşe'nin YKS Paneli" diye senin adınla açılır.
 - **Alanın:** Sayısal, Eşit Ağırlık, Sözel ya da Dil.
 - **Durumun:** 12. sınıf, mezun, 11. sınıf veya diğer. Ana ekrandaki motivasyon mesajı buna göre değişir.
-- **Hedefin:** İstersen hedef bölümünü yazarsın, ana ekranda hep önünde durur.
+Bunları sonradan **Profil & Ayarlar**'dan değiştirebilirsin. Hedef üniversiteni ise **Hedef & Puan** sayfasında girersin.
 
-Bunların hepsini sonradan **Profil & Ayarlar**'dan değiştirebilirsin.
+<br clear="right">
+
+### 🧭 Adım adım rehber
+
+<img src="docs/13-rehber.jpg" width="220" align="right">
+
+Karşılama ekranından sonra kısa bir rehber açılır ve uygulamayı adım adım tanıtır. İlgili yer ekranda parlar, yanında ne işe yaradığı yazar:
+
+- Konuyu bitirince ✓'ye dokunmak
+- ▶ İzle ile anlatım videosunu açmak
+- Sayacı başlatmak
+- Deneme ve yanlış eklemek
+- Hedefini girmek
+
+**İleri** ile ilerlersin, istersen **Geç** dersin. Rehberi **Profil & Ayarlar → Rehberi tekrar göster** ile istediğin zaman yeniden açabilirsin.
 
 <br clear="right">
 
@@ -60,6 +76,7 @@ Bunların hepsini sonradan **Profil & Ayarlar**'dan değiştirebilirsin.
 Uygulamayı açınca ilk gördüğün yer:
 
 - **YKS geri sayımı:** Sınava kalan gün, saat ve dakika.
+- **Hedefin:** Hedef bölümün ve şu anki sıralaman, durumuna göre renkli olarak.
 - **Çalışma serisi:** Kaç gündür aralıksız çalıştığın 🔥
 - **Günün özeti:** Bugün kaç saat çalıştın, kaç soru çözdün.
 - **Haftalık hedef:** Haftalık çalışma saati hedefine ne kadar yaklaştın.
@@ -131,14 +148,37 @@ Bir dersin konularını bitirdikçe o dersin ağacı **Tohum → Filiz → Fidan
 
 <br clear="right">
 
-### 🎯 Hedef ve puan
+### 🎯 Hedef ve sıralama takibi
 
-<img src="docs/08-hedef.jpg" width="220" align="right">
+<img src="docs/12-siralama.jpg" width="220" align="right">
 
-- Hedef bölümünü, sıralamanı ve diploma notunu girersin.
-- Son denemelerine göre **tahmini puanını** seçtiğin alanda (SAY, EA, SÖZ ya da DİL) hesaplar.
-- Hedef netlerini girersen o netlerle kaç puan alacağını gösterir.
-- Haftalık çalışma saati hedefi koyarsın.
+Önce hedef üniversiteni, bölümünü ve bölümün başarı sıralamasını yazarsın (YÖK Atlas'ta yazar). Sonra kendi sıralamanı girersin, uygulama ne kadar kaldığını söyler:
+
+- **Örnek:** Hedefin 20 bin, sen 100 bindesin. Uygulama "Hedefine ulaşmak için **80 bin** sıralama ilerlemen lazım" der.
+- **Güncelleme:** Bir sonraki denemede 50 bine çıkarsan "Harika! **50 bin** sıralama yükseldin, hedefe daha da yaklaştın" der.
+- **Renkler:** Hedefe ne kadar yakın olduğunu gösterir.
+  - 🔴 Kırmızı: çok uzak (hedefin 3 katından fazla)
+  - 🟡 Sarı: orta (1,5–3 katı)
+  - 🔵 Mavi: yakın (1,5 katına kadar)
+  - 🟢 Yeşil: hedeftesin ya da daha iyisi
+- **Grafik:** Girdiğin bütün sıralamalar bir grafikte görünür.
+
+Aynı sayfada son denemelerine göre **tahmini puanını** (SAY, EA, SÖZ ya da DİL) ve hedef netlerine göre hangi derste kaç net artırman gerektiğini de görürsün.
+
+<br clear="right">
+
+### 📈 İstatistikler
+
+<img src="docs/11-istatistik.jpg" width="220" align="right">
+
+Bugüne kadar yaptığın bütün çalışmaların toplamı:
+
+- **Toplamlar:** Toplam çalışma süresi, toplam çözülen soru, çalışılan gün sayısı ve deneme sayısı.
+- **Dönem seçimi:** 7 gün, 30 gün, bu ay, bu yıl ya da tüm zamanlar.
+- **Aylık grafikler:** Her ay kaç saat çalıştığın ve kaç soru çözdüğün.
+- **Ders ders dağılım:** Hangi derse toplam ne kadar zaman ayırdığın.
+- **Rekorların:** En çok çalıştığın gün, en çok soru çözdüğün gün, en uzun serin.
+- **Çalışma takvimi:** Yılın her günü, ne kadar çalıştığına göre renklenir.
 
 <br clear="right">
 
@@ -148,6 +188,7 @@ Bir dersin konularını bitirdikçe o dersin ağacı **Tohum → Filiz → Fidan
 
 - Adını, alanını, durumunu ve hedefini değiştirebilirsin. Alanı değiştirince AYT dersleri ona göre değişir, işaretlediğin konular silinmez.
 - Her ders için hocanı yazarsın.
+- Uygulama rehberini tekrar açabilirsin.
 - **Yedekleme:** Bütün verilerini yedekleyip başka bir telefona taşıyabilirsin.
 - **Tüm verileri sıfırla:** Uygulamayı ilk günkü haline döndürür.
 
